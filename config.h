@@ -172,8 +172,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
         { MODKEY|ControlMask,           XK_h,           shiftview,      { .i = -1 } },
+        { MODKEY|ControlMask,           XK_a,           shiftview,      { .i = -1 } },
         { MODKEY|Mod1Mask,              XK_h,           shifttag,       { .i = -1 } },
         { MODKEY|ControlMask,           XK_l,           shiftview,      { .i = +1 } },
+        { MODKEY|ControlMask,           XK_d,           shiftview,      { .i = +1 } },
         { MODKEY|Mod1Mask,              XK_l,           shifttag,       { .i = +1 } },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	/* J and K are automatically bound above in STACKEYS */
