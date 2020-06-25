@@ -1950,12 +1950,6 @@ spawn(const Arg *arg)
 		perror(" failed");
 		exit(EXIT_SUCCESS);
 	} 
-        /*else { // fork returns a non zero pid in the parent process. So the else branch will be taken only in the parent.*/
-                /*if (arg->v == fullscrcmd) {*/
-                        /*wait(NULL); // Wait for the child process to change state. In this case exit*/
-                        /*disablefullscr(0);*/
-                /*}*/
-	/*}*/
 }
 
 void
