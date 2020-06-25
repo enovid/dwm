@@ -194,6 +194,7 @@ static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
 static void copyvalidchars(char *text, char *rawtext);
 static Monitor *createmon(void);
+static void disablefullscr(const Arg *arg);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
@@ -798,6 +799,13 @@ createmon(void)
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
 	return m;
+}
+
+void
+disablefullscr(const Arg *arg)
+{
+        if(selmon->sel)
+                setfullscreen(selmon->sel, 0);
 }
 
 void
@@ -1941,7 +1949,13 @@ spawn(const Arg *arg)
 		fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
 		perror(" failed");
 		exit(EXIT_SUCCESS);
-	}
+	} 
+        /*else { // fork returns a non zero pid in the parent process. So the else branch will be taken only in the parent.*/
+                /*if (arg->v == fullscrcmd) {*/
+                        /*wait(NULL); // Wait for the child process to change state. In this case exit*/
+                        /*disablefullscr(0);*/
+                /*}*/
+	/*}*/
 }
 
 void
