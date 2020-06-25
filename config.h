@@ -30,7 +30,6 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-//const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd1[] = {"kitty", "--name", "spterm", "--single-instance", "--listen-on", "unix:/tmp/mykitty", NULL};
 const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=10", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
@@ -102,7 +101,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = {"kitty", "--single-instance", "--listen-on", "unix:/tmp/mykitty", NULL};
+static const char *termcmd[]  = { "kitty", "--single-instance", "--listen-on", "unix:/tmp/mykitty", NULL };
+//static const char *fullscrcmd[] = { "xdotool", "getactivewindow", "key", "--clearmodifiers", "F11", NULL };
+static const char *fullscrcmd[] = { "fullscreen-browser", NULL };
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -168,6 +169,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY,			XK_d,		spawn,		SHCMD("") } }, */
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
+	{ MODKEY,			XK_e,		spawn,	        {.v = fullscrcmd } },
+        { MODKEY|ControlMask,		XK_e,		disablefullscr, {0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
@@ -217,17 +220,17 @@ static Key keys[] = {
 	//{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
-	{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
-	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
-	{ MODKEY,			XK_F4,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
-	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
-	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
-	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
-	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
+	//{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
+	//{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+	//{ MODKEY,			XK_F4,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	//{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
+	//{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
+	//{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
+	//{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
+	//{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
+	//{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
+	//{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
+	//{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
         { MODKEY,                       XK_r,           togglermaster,  {0} },
@@ -239,21 +242,21 @@ static Key keys[] = {
 	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
 	{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
 
-	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+	//{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	//{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+	//{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("playerctl -p spotify -a previous") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("playerctl -p spotify -a next") },
 	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("playerctl -p spotify -a pause") },
 	{ 0, XF86XK_AudioPlay,		spawn,		SHCMD("playerctl -p spotify -a play-pause") },
 	{ 0, XF86XK_AudioStop,		spawn,		SHCMD("playerctl -p spotify -a stop") },
-	{ 0, XF86XK_AudioRewind,	spawn,		SHCMD("mpc seek -10") },
-	{ 0, XF86XK_AudioForward,	spawn,		SHCMD("mpc seek +10") },
+	//{ 0, XF86XK_AudioRewind,	spawn,		SHCMD("mpc seek -10") },
+	//{ 0, XF86XK_AudioForward,	spawn,		SHCMD("mpc seek +10") },
 	//{ 0, XF86XK_AudioMedia,		spawn,		SHCMD("st -e ncmpcpp") },
 	//{ 0, XF86XK_PowerOff,		spawn,		SHCMD("sysact") },
 	//{ 0, XF86XK_Calculator,		spawn,		SHCMD("st -e bc -l") },
 	//{ 0, XF86XK_Sleep,		spawn,		SHCMD("sudo -A zzz") },
-	{ 0, XF86XK_WWW,		spawn,		SHCMD("$BROWSER") },
+	//{ 0, XF86XK_WWW,		spawn,		SHCMD("$BROWSER") },
 	//{ 0, XF86XK_DOS,		spawn,		SHCMD("st") },
 	//{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 	//{ 0, XF86XK_TaskPane,		spawn,		SHCMD("st -e htop") },
@@ -264,8 +267,8 @@ static Key keys[] = {
 	//{ 0, XF86XK_TouchpadToggle,	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
 	//{ 0, XF86XK_TouchpadOff,	spawn,		SHCMD("synclient TouchpadOff=1") },
 	//{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
+	//{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
+	//{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
 
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
