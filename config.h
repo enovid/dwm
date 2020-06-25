@@ -102,8 +102,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "kitty", "--single-instance", "--listen-on", "unix:/tmp/mykitty", NULL };
-//static const char *fullscrcmd[] = { "xdotool", "getactivewindow", "key", "--clearmodifiers", "F11", NULL };
-static const char *fullscrcmd[] = { "fullscreen-browser", NULL };
+static const char *borderlessbrowsercmd[] = { "borderless-chrome", NULL };
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -155,7 +154,7 @@ static Key keys[] = {
         { MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
 	//{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
 	//{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
-	//{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("xdotool key Page_Up") },
+        //{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("xdotool key Page_Up") },
         //{ MODKEY,			XK_bracketright,	spawn,		SHCMD("xdotool key Page_Down") },
 	//{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") },
 	//{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
@@ -169,7 +168,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY,			XK_d,		spawn,		SHCMD("") } }, */
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
-	{ MODKEY,			XK_e,		spawn,	        {.v = fullscrcmd } },
+	{ MODKEY,			XK_e,		spawn,	        {.v = borderlessbrowsercmd } },
         { MODKEY|ControlMask,		XK_e,		disablefullscr, {0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
