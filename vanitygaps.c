@@ -397,9 +397,10 @@ deck(Monitor *m)
 	sw = mw = m->ww - 2*ov;
 
 	if (m->nmaster && n > m->nmaster) {
-		sw = (mw - iv) * (1 - m->mfact);
-		mw = (mw - iv) * m->mfact;
-		sx = mx + mw + iv;
+		sw = (mw - iv) * (m->rmaster ? m->mfact : 1 - m->mfact);
+		mw = (mw - iv) * (m->rmaster ? 1 - m->mfact : m->mfact);
+		sx = m->rmaster ? m->wx + ov : mx + mw + iv;
+                mx = m->rmaster ? sx + sw + iv : mx;
 		sh = m->wh - 2*oh;
 	}
 
