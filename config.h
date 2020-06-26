@@ -152,12 +152,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
         { MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
-	//{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
-	//{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
-        //{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("xdotool key Page_Up") },
-        //{ MODKEY,			XK_bracketright,	spawn,		SHCMD("xdotool key Page_Down") },
-	//{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") },
-	//{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
 	{ MODKEY,			XK_backslash,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
@@ -241,6 +235,8 @@ static Key keys[] = {
 	//{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
 	//{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
         { MODKEY|ControlMask,		XK_m,		spawn,		SHCMD("pavucontrol") },
+	{ MODKEY|ShiftMask,		XK_bracketleft, spawn,		SHCMD("playerctl -p spotify -a previous") },
+	{ MODKEY|ShiftMask,		XK_bracketright,spawn,		SHCMD("playerctl -p spotify -a next") },
 
         { 0, XF86XK_AudioMute,	        spawn,		SHCMD("pamixer --toggle-mute") },
         { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --increase 3") },
