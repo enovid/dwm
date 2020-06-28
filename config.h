@@ -239,8 +239,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_bracketright,spawn,		SHCMD("playerctl -p spotify -a next") },
 
         { 0, XF86XK_AudioMute,	        spawn,		SHCMD("pamixer --toggle-mute") },
-        { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --increase 3") },
-        { 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --decrease 3") },
+        { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --increase 5") },
+        { 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --decrease 5") },
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("playerctl -p spotify -a previous") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("playerctl -p spotify -a next") },
 	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("playerctl -p spotify -a pause") },
