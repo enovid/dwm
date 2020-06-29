@@ -238,9 +238,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_bracketleft, spawn,		SHCMD("playerctl -p spotify -a previous") },
 	{ MODKEY|ShiftMask,		XK_bracketright,spawn,		SHCMD("playerctl -p spotify -a next") },
 
-        { 0, XF86XK_AudioMute,	        spawn,		SHCMD("pamixer --toggle-mute") },
-        { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --increase 5") },
-        { 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --decrease 5") },
+        { 0, XF86XK_AudioMute,	        spawn,		SHCMD("pamixer --toggle-mute; notify-volume") },
+        { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --increase 5; notify-volume") },
+        { 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --decrease 5; notify-volume") },
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("playerctl -p spotify -a previous") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("playerctl -p spotify -a next") },
 	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("playerctl -p spotify -a pause") },
@@ -263,8 +263,8 @@ static Key keys[] = {
 	//{ 0, XF86XK_TouchpadToggle,	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
 	//{ 0, XF86XK_TouchpadOff,	spawn,		SHCMD("synclient TouchpadOff=1") },
 	//{ 0, XF86XK_TouchpadOn,	spawn,		SHCMD("synclient TouchpadOff=0") },
-        { 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 2") },
-        { 0, XF86XK_MonBrightnessDown,  spawn,		SHCMD("light -U 2") },
+        { 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 5; notify-brightness") },
+        { 0, XF86XK_MonBrightnessDown,  spawn,		SHCMD("light -U 5; notify-brightness") },
 
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
