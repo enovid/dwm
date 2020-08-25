@@ -157,8 +157,8 @@ static Key keys[] = {
 
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
-	{ MODKEY,			XK_s,		togglesticky,	{0} },
-	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
+        { MODKEY,	        	XK_s,		spawn,		SHCMD("screenshot") }, 
+	{ MODKEY|ShiftMask,		XK_s,		togglesticky,	{0} },
 	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY,			XK_d,		spawn,		SHCMD("") } }, */
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
@@ -194,6 +194,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	//{ MODKEY,			XK_n,		spawn,		SHCMD("st -e nvim -c VimwikiIndex") },
 	//{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
+	//{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
 	//{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
 	//{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
