@@ -202,10 +202,10 @@ static Key keys[] = {
 	//{ MODKEY,			XK_period,	spawn,		SHCMD("mpc next") },
 	//{ MODKEY|ShiftMask,		XK_period,	spawn,		SHCMD("mpc repeat") },
 
-	//{ MODKEY,			XK_Left,	focusmon,	{.i = -1 } },
-	//{ MODKEY|ShiftMask,		XK_Left,	tagmon,		{.i = -1 } },
-	//{ MODKEY,			XK_Right,	focusmon,	{.i = +1 } },
-	//{ MODKEY|ShiftMask,		XK_Right,	tagmon,		{.i = +1 } },
+        { MODKEY,			XK_comma,	focusmon,	{.i = -1 } },
+        { MODKEY|ShiftMask,		XK_comma,	tagmon,		{.i = -1 } },
+        { MODKEY,			XK_period,	focusmon,	{.i = +1 } },
+        { MODKEY|ShiftMask,		XK_period,	tagmon,		{.i = +1 } },
 
 	//{ MODKEY,			XK_Page_Up,	shiftview,	{ .i = -1 } },
 	//{ MODKEY|ShiftMask,		XK_Page_Up,	shifttag,	{ .i = -1 } },
