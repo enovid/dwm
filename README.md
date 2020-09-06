@@ -11,7 +11,7 @@ This is suckless, the source code is the documentation! Check out [config.h](con
 - scratchpad: Accessible with mod+shift+enter.
 - New layouts: bstack, fibonacci, deck, centered master and more. All bound to keys `super+(shift+)t/y/u/i`.
 - True fullscreen (`super+f`) and prevents focus shifting.
-- Windows can be made sticky (`super+s`).
+- Windows can be made sticky (`super+S`).
 - stacker: Move windows up the stack manually (`super-K/J`).
 - shiftview: Cycle through tags (`super+g/;`).
 - vanitygaps: Gaps allowed across all layouts.
